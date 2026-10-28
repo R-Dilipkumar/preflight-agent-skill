@@ -1,0 +1,12 @@
+# Local notes
+session.md
+
+# Packaged skill (attached to releases instead)
+*.skill
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.claude/
