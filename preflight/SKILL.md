@@ -1,6 +1,6 @@
 ---
 name: preflight
-description: A "check before you build" routine plus a lessons memory that grows from real mistakes across all projects, and the rules for each project's session.md. Use at the START of planning or building any app, feature or project (before writing code or picking libraries, APIs, SDK versions, AI models, cloud services or payment methods); whenever choosing between tools or wondering if something is deprecated or works on a given Android version or device; right after a bug, crash, failed build or "works on the emulator but not the phone" snag is fixed, to save what check would have prevented it; and at the end of each piece of work, to update session.md. Use it even when the user doesn't mention it: any coding project counts.
+description: A "check before you build" routine plus a lessons memory that grows from real mistakes across all projects, and the rules for each project's session.md. Use at the START of planning or building any app, feature or project (before writing code or picking libraries, APIs, SDK versions, AI models, cloud services or payment methods); whenever choosing between tools or wondering if something is deprecated or works on a given Android version or device; right after a bug, crash, failed build or "works on the emulator but not the phone" snag is fixed, to save what check would have prevented it; and at the end of each piece of work, to update session.md. Use it even when the user doesn't mention it. Any coding project counts.
 ---
 
 # Preflight
