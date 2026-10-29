@@ -18,6 +18,7 @@ All paths below are inside this skill's folder.
 | `lessons/general.md` | Always, when planning |
 | `lessons/<topic>.md` | When the project touches that topic (list below) |
 | `session-template.md` | When creating or updating a project's session.md |
+| `hooks/preflight_reminder.py` | Never needs reading: an optional Claude Code Stop hook that reminds you of steps 3–4 after file edits (at most every 30 min) |
 
 Topics (keep this list in sync when you add a file):
 - _None yet. Create a topic file (e.g. `android.md`, `web.md`, `ai-models.md`, `tools.md`) the first time a lesson doesn't fit `general.md`, and list it here with a one-line "covers"._
@@ -46,6 +47,7 @@ Ask: **"What check, done before starting, would have avoided this?"**
 
 Then:
 1. Read the target lessons file. If a similar entry exists, sharpen it instead of adding a new one.
+   Before changing it, back it up: copy it to `backups/<file name>-<YYYY-MM-DD>.md` (one copy per file per day is enough; keep the 5 newest per file and delete older ones). To undo a bad edit, copy a backup back. Do the same before editing any other file in this skill.
 2. If this is the second fact of the same kind, merge them into one rule and keep the facts as short examples under it.
 3. Write one line in the format below.
 4. If no topic file fits and the topic will likely come up again, create a new file and add it to the Topics list above.

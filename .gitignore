@@ -10,3 +10,7 @@ Thumbs.db
 .vscode/
 .idea/
 .claude/
+
+# Lesson backups made while using the skill
+preflight/backups/
+__pycache__/

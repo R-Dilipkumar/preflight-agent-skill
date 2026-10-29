@@ -17,6 +17,8 @@ A lot of time in AI-assisted coding goes on the same loop: build something, find
 - **Stays small:** repeats get merged into one rule, each file stays under about 60 lines, and facts older than 6 months get re-checked.
 - **Coding standards:** a short list that changes how code gets written (build only what's asked, fail loudly, copy twice before sharing code, delete only what's confirmed unused, and more).
 - **session.md per project:** a local notes file with a "Start here" summary, key decisions and a dated log, so any new session can pick up the work. Each log entry feeds snags back into the lessons.
+- **Backups before edits:** the agent copies a lessons file into `backups/` before changing it (newest 5 kept), so a bad edit can be undone.
+- **Optional reminder hook (Claude Code):** after files are edited, a small script reminds the agent to save lessons and update `session.md`, at most every 30 minutes.
 - **Works across tools:** plain Markdown in the open Agent Skills format (`SKILL.md`). Nothing tool-specific inside.
 - **Starts empty:** your lessons come from your own projects.
 
@@ -64,6 +66,32 @@ Skills load when a request looks like a match. To make sure it runs on every pro
 Use the preflight skill before planning or building, after fixing any bug or snag, and at the end of each piece of work.
 ```
 
+### Optional: automatic reminder (Claude Code)
+
+Skills only run when the agent thinks of them. This hook makes sure the end-of-work steps happen. After a turn where files were edited (at most once every 30 minutes), it asks the agent to save any lesson and update `session.md`. If there's nothing to save, the agent just finishes. It needs Python.
+
+Add this to `~/.claude/settings.json` (merge it with any hooks you already have):
+
+```json
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME/.claude/skills/preflight/hooks/preflight_reminder.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Start a new session afterwards so the setting loads. Other tools: use their own hook feature if they have one; otherwise the instructions-file line above does the job.
+
 ## How it works
 
 | When | What the agent does |
@@ -80,6 +108,8 @@ Files in `preflight/`:
 - `research.md`: the check-before-using routine
 - `session-template.md`: session.md rules and layout
 - `lessons/`: `general.md` plus topic files (Android, web, ...) that the agent creates as lessons come in
+- `hooks/preflight_reminder.py`: the optional reminder hook
+- `backups/`: created on first edit; copies of lessons files from before each change
 
 ## Good to know
 
